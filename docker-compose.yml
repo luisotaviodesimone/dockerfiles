@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  worker1:
+    image: luisotaviodesimone/ubuntu-ssh
+    container_name: worker1
+    hostname: worker1
+    networks:
+      mynet:
+        ipv4_address: 172.20.0.11
+
+  worker2:
+    image: luisotaviodesimone/ubuntu-ssh
+    container_name: worker2
+    hostname: worker2
+    networks:
+      mynet:
+        ipv4_address: 172.20.0.12
+
+  master:
+    image: luisotaviodesimone/ubuntu-ssh
+    container_name: master
+    hostname: master
+    networks:
+      mynet:
+        ipv4_address: 172.20.0.10
+
+  worker3:
+    image: luisotaviodesimone/almalinux-ssh
+    container_name: worker3
+    hostname: worker3
+    networks:
+      mynet:
+        ipv4_address: 172.20.0.13
+
+networks:
+  mynet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+    name: mynet
+    driver: bridge
