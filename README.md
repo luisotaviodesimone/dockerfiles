@@ -1,6 +1,6 @@
 # dockerfiles
 
-Dockerfiles for creating and customized images
+Dockerfiles for creating customized images 
 
 ## Getting started
 
