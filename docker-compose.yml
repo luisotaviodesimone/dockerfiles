@@ -1,43 +1,84 @@
 version: '3.1'
 
 services:
-  worker1:
-    image: luisotaviodesimone/ubuntu-ssh
+  master1:
+    privileged: true
+    # image: luisotaviodesimone/ubuntu-ssh
+    build:
+      context: .
+      dockerfile: ./Dockerfile.ubuntu
+    container_name: master1
+    hostname: master1
+    networks:
+      mynet:
+        ipv4_address: 10.20.0.11
+
+  master2:
+    privileged: true
+    # image: luisotaviodesimone/ubuntu-ssh
+    build:
+      context: .
+      dockerfile: ./Dockerfile.ubuntu
+    container_name: master2
+    hostname: master2
+    networks:
+      mynet:
+        ipv4_address: 10.20.0.12
+
+  master3:
+    privileged: true
+    # image: luisotaviodesimone/ubuntu-ssh
+    build:
+      context: .
+      dockerfile: ./Dockerfile.ubuntu
+    container_name: master3
+    hostname: master3
+    networks:
+      mynet:
+        ipv4_address: 10.20.0.13
+
+  worker4:
+    privileged: true
+    # image: luisotaviodesimone/ubuntu-ssh
+    build:
+      context: .
+      dockerfile: ./Dockerfile.ubuntu
     container_name: worker1
     hostname: worker1
     networks:
       mynet:
-        ipv4_address: 172.20.0.11
+        ipv4_address: 10.20.0.14
 
-  worker2:
-    image: luisotaviodesimone/ubuntu-ssh
+  worker5:
+    privileged: true
+    # image: luisotaviodesimone/ubuntu-ssh
+    build:
+      context: .
+      dockerfile: ./Dockerfile.ubuntu
     container_name: worker2
     hostname: worker2
     networks:
       mynet:
-        ipv4_address: 172.20.0.12
+        ipv4_address: 10.20.0.15
 
-  master:
-    image: luisotaviodesimone/ubuntu-ssh
-    container_name: master
-    hostname: master
-    networks:
-      mynet:
-        ipv4_address: 172.20.0.10
 
-  worker3:
-    image: luisotaviodesimone/almalinux-ssh
+  worker6:
+    privileged: true
+    # image: luisotaviodesimone/almalinux-ssh
+    build:
+      context: .
+      dockerfile: ./Dockerfile.almalinux
     container_name: worker3
     hostname: worker3
     networks:
       mynet:
-        ipv4_address: 172.20.0.13
+        ipv4_address: 10.20.0.16
 
 networks:
   mynet:
     ipam:
       driver: default
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 10.20.0.0/24
     name: mynet
     driver: bridge

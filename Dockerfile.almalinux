@@ -18,5 +18,10 @@ RUN ssh-keygen -A
 # Expose the SSH port
 EXPOSE 22
 
+RUN dnf install systemd systemd-sysv dbus -y
+
+ENTRYPOINT ["/sbin/init"]
+
+
 # Run SSH
 CMD ["/usr/sbin/sshd", "-D"]
