@@ -13,3 +13,7 @@ docker build -f Dockerfile.almalinux -t almalinux-ssh .
 docker build -f Dockerfile.ubuntu-server -t ubuntu-server-ssh .
 
 ```
+
+# TODO
+
+- Rebuild images to docker hub
